@@ -5,11 +5,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "articulos")
+@Table(name = "usuarios")
 public class Articulo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,12 +19,13 @@ public class Articulo {
     @Column(length = 100,nullable = false)
     private String nombre;
 
-    @Column(length = 100,nullable = false)
+    @Column(length = 300,nullable = false)
     private String descripcion;
 
-    private String fechaRegitro;
+    private Date fechaRegistro;
 
-    @Column(length = 100,nullable = false)
+    @Column(length = 300,nullable = false)
     private String categoria;
+
 
 }
