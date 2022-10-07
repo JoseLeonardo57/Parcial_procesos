@@ -16,21 +16,21 @@ public class Articulo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
 
-    @Column(length = 100,nullable = false)
+    @Column(length = 100)
     private String nombre;
 
-    @Column(length = 300,nullable = false)
+    @Column(length = 300)
     private String descripcion;
 
     private Date fechaRegistro;
 
-    @Column(length = 300,nullable = false)
+    @Column(length = 300)
     private String categoria;
 
-    @Column(length = 300,nullable = false)
-    private  String PrecioVenta;
+    @Column(length = 300)
+    private String precioVenta;
 
-    @Column(length = 300,nullable = false)
-    private  String PrecioCompra;
+    @Column(length = 300)
+    private String precioCompra;
 
 }

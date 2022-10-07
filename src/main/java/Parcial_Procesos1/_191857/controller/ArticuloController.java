@@ -7,9 +7,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+@RestController
 public class ArticuloController {
 
 
@@ -34,6 +36,7 @@ public class ArticuloController {
             ArticuloRepository.save(articulo);
             return new ResponseEntity(articulo,HttpStatus.CREATED);
         }catch (Exception e){
+            System.out.println(e.fillInStackTrace());
             return ResponseEntity.badRequest().build();
         }
     }
