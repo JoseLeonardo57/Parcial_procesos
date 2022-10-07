@@ -53,19 +53,20 @@ public class ArticuloController {
 
 
     @PutMapping("/articulo/{codigo}")
-    public ResponseEntity editarArticulo(@PathVariable Long id, @RequestBody Articulo articulo){
-        Optional<Articulo> articuloBD = ArticuloRepository.findById(id);
+    public ResponseEntity editarArticulo(@PathVariable Long codigo, @RequestBody Articulo articulo){
+        Optional<Articulo> articuloBD = ArticuloRepository.findById(codigo);
         if (articuloBD.isPresent()){
             try {
                 articuloBD.get().setNombre(articulo.getNombre());
                 articuloBD.get().setDescripcion(articulo.getDescripcion());
                 articuloBD.get().setFechaRegistro(articulo.getFechaRegistro());
                 articuloBD.get().setCategoria(articulo.getCategoria());
-                articuloBD.get().setPrecioVenta(articulo.getPrecioVenta());
                 articuloBD.get().setPrecioCompra(articulo.getPrecioCompra());
+                articuloBD.get().setPrecioVenta(articulo.getPrecioVenta());
                 ArticuloRepository.save(articuloBD.get());
                 return new ResponseEntity(articuloBD,HttpStatus.OK);
             }catch (Exception e){
+                System.out.println(e.fillInStackTrace());
                 return ResponseEntity.badRequest().build();
             }
         }
