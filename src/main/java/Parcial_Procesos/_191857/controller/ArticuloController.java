@@ -47,6 +47,29 @@ public class ArticuloController {
         return new ResponseEntity(articulos,HttpStatus.OK);
     }
 
+    @PutMapping("/articulo/{codigo}")
+    public ResponseEntity editarArticulo(@PathVariable Long id, @RequestBody Articulo articulo){
+        Optional<Articulo> articuloBD = ArticuloRepository.findById(id);
+        if (articuloBD.isPresent()){
+            try {
+                articuloBD.get().setNombre(articulo.getNombre());
+                articuloBD.get().setDescripcion(articulo.getDescripcion());
+                articuloBD.get().setFechaRegistro(articulo.getFechaRegistro());
+                articuloBD.get().setCategoria(articulo.getCategoria());
+                articuloBD.get().setPrecioVenta(articulo.getPrecioVenta());
+                articuloBD.get().setPrecioCompra(articulo.getPrecioCompra());
+                ArticuloRepository.save(articuloBD.get());
+                return new ResponseEntity(articuloBD,HttpStatus.OK);
+            }catch (Exception e){
+                return ResponseEntity.badRequest().build();
+            }
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+
+
+
 
 
 }

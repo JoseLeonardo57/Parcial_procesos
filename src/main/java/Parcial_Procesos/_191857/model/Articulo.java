@@ -10,8 +10,9 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "usuarios")
+@Table(name = "articulos")
 public class Articulo {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
@@ -27,5 +28,10 @@ public class Articulo {
     @Column(length = 300,nullable = false)
     private String categoria;
 
+    @Column(length = 300,nullable = false)
+    private  String PrecioVenta;
+
+    @Column(length = 300,nullable = false)
+    private  String PrecioCompra;
 
 }
